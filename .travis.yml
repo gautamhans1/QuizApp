@@ -1,0 +1,52 @@
+sudo: false
+language: android
+jdk: oraclejdk8
+env:
+  global:
+  - ANDROID_API_LEVEL=28
+  - EMULATOR_API_LEVEL=28
+  - ANDROID_BUILD_TOOLS_VERSION=28.0.2
+  - ANDROID_ABI=google_apis/armeabi-v7a
+  - ADB_INSTALL_TIMEOUT=20
+  - storepass=WvWLJAGWLqVXz2O22ZBHPO5qLTYooVDzmFoSSWJuaf5mmeJEGkTdbTGhnvr4CGsRfOSgcDRkLH0Q3HPgb2M5Gp7d/zqBLSM3C1ntpDd3C44U1ZIgJ0rtAJYoMPXVCLG8fq7uFJgrazMu7s6lrnzS02U6d7OqKUuK7t34w+0isoxs7+kGmJ/lQiaQwO22n/5s1o92ARQyBL459rf2inDxRvF4IoL8AlfOpjLrPUJzjofZq2e42WRA2JeyFL6dkvZSTfObmJf0fgIQdOVvCr4OJWJLvKAQ7RTior/zDQJNK8KeuD/81r0xqrKAYbZJZrybjx0XFMvjpQSet9NG8AThh9aT+HScfZcvUaE7q8q4/8MuhXuiT9Lj4gcUD7tVr+5a8d81hpMywy36Uy05W5Pang65nSlApFyYgoMM+V/QsCzAt+B1FxFFTeIM/Qp6iDNMuj5CKyU6RHECshr6nsKIDKxsVjzdmM894BCIJLgbcdFm6lohK8lwcIZf4gOGkwv0ShPhWs9G+1XQKxr/nvJfPGonhMeO05BL5Pa2FCLfyGTJzbSMXXgHTuNadjDJBI5y6oud/LOgENJW4UERXaIeVyeQRTzUfwK9qyad082XgCuP8iqlk1lENAWteq5cIhSBRZKIAcEZASiiKxuqaignpJySbllIc9tUXmO8+2wiA3Y=
+  - keypass=WVJ5dRmWx4nKbHNjQ9IJdapEQsmfPUGIkOKaagxC/ljmc306G5ffpe0MVJDSdWVRjpHrH3m4o0zqcKDlr/8LNL/x8iDYzvOCNbmrBQctxzzeF95JvXhpq+lMmlOfdwokRsHI9P9ZLCo4ZWh56+Qe0wtpCzw/C/pIUasaEEVF6Ew5f7zBvIfUxkpCbf6xnO7M5+HB6WjMO45AG5UObXME2ocx3iJkCFchvFAftU8fDS4i2NZTzq89C4vddoaLiuqXy2tt/LUJeQZHONzWEG6inKyMTafeBZu/rbnfOqT1qlrwm1M2oLGHO1LGK6eUcbSWfGPj2IOt319P4Hkb8zj2wtN4E28LNwV8byZlnDnahk1jTBU/z87cbFmdQjX1sCmGn4Le0HUg8WWXa4w5PBR1Kpbn0XT1EBAp4wJHBedwSo1ZWVsOzjYONDjCi0tVYdXGW4IrTVdy1bDrz7TB8RtHdDw+YqZ7goH5Q1MDqkdRqzH/juifi+ldays7zdeXtPbEC4yqMjo7UZDK2NO3uLURTH/je6GMjoaTNjPR4iHteWQTFF0t/XNnOHulYf8n3r/QbPfeeqRZcUim6lRU35vqfMoSIpXjlP3AvHkw3aoCKiwywNlP++ZuWrBJiTTvZs/GjetPq5MAZNKwmXmDzNVT5mq6L10J+RUOM1mdmaMHqlY=
+  - LICENSE_1=~/Library/Android/sdk/tools/bin/sdkmanager
+  - LICENSE_2=/usr/local/android-sdk/licenses
+android:
+  components:
+  - tools
+  - platform-tools
+  - build-tools-28.0.2
+  - android-28
+  - extra-google-m2repository
+  - extra-android-m2repository
+  - extra-google-google_play_services
+  - extra-android-support
+  - addon-google_apis-google-$ANDROID_API_LEVEL
+  - addon-google_apis-google-$EMULATOR_API_LEVEL
+  - sys-img-armeabi-v7a-addon-google_apis-google-$ANDROID_API_LEVEL
+  - sys-img-armeabi-v7a-addon-google_apis-google-$EMULATOR_API_LEVEL
+  licenses:
+  - android-sdk-preview-license-.+
+  - android-sdk-license-.+
+  - google-gdk-license-.+
+script:
+- chmod +x gradlew
+- "./gradlew clean"
+- "./gradlew assembleDebug"
+- "./gradlew assembleDebugAndroidTest"
+before_install:
+- yes | sdkmanager "platforms;android-27"
+- chmod +x gradlew
+before_deploy:
+- git config --local user.name "gautamhans1"
+- git config --local user.email "gautamhans1@gmail.com"
+- git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
+deploy:
+  provider: releases
+  api_key:
+    secure: JQ7gBnmTM1H7rItcxeuGj9d7JjuePt7V2RhqPdJx+93RAEumIWwcmmGqYOzAh2QtQliVdaNjuhf0EVfD+ikaDPUDc4a7RB9uZ1l+/tOqI5BaywRCdp0D48aly4Pj1yn30AyE+Zm4LiCwE9CdhHcelUbWRZzW+PaqtxmzNkcPz8XECqesULykpzVSdsrSu6ugYZSEJi2HUDkXO3vXHgKeuMpChgANTQUwzA2nAMuhgjl2GKDLoUHqDh+hk9z7CgUcAk+OFAHSiO55wU14+pZlWSIY2lPtScEcT4svm5zdB6VDc6VuvnUNnbJOc6MJ09uS+zyPmpPVYFe6sGFFM0WkueqNJcOHw4QMublqu8t+VAQVeTxweb8CFJpJ72OssGtspyn5NOj8dtcs0inL0W/gzpsIYFrBv51gwQdcnJYvwz+kiXe5NPU2Zuztr8B2+cTZk6qJTGOtERfoFkduC4MVfEIBuekrHhGEK7F0u4dZS/NoWUZgresggrZkqdfj/tPedjjZuwx11+SKKotZ3xC6HCPCeB/gmoa0DI6+wjBr08AL6ESUlpszU/fTjfgh8/4Tty0vrlaQBTi+5sjLduU+TsK7x1/kXH3zbltR16Pc0dt/VZOCmKmsA6PDBk2jVCoyrIyuGv56Ye4anBWUyu6YkgbVz4IeVKn/5W2FRm+Lzus=
+  file: app\build\outputs\apk\debug\QuizApp-debug.apk
+  on:
+    branch: master
+after_failure: "cat $TRAVIS_BUILD_DIR/app/build/outputs/lint-results-debug.xml"
