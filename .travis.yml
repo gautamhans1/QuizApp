@@ -1,52 +1,62 @@
-sudo: false
 language: android
+sudo: required
 jdk: oraclejdk8
+before_cache: "-rm -f $HOME/.gradle/caches/modules-2/modules-2.lock -rm -fr $HOME/.gradle/caches/*/plugin-resolution/"
+cache: "-$HOME/.gradle/caches -$HOME/.gradle/wrapper"
 env:
   global:
-  - ANDROID_API_LEVEL=28
-  - EMULATOR_API_LEVEL=28
-  - ANDROID_BUILD_TOOLS_VERSION=28.0.2
-  - ANDROID_ABI=google_apis/armeabi-v7a
-  - ADB_INSTALL_TIMEOUT=20
-  - storepass=WvWLJAGWLqVXz2O22ZBHPO5qLTYooVDzmFoSSWJuaf5mmeJEGkTdbTGhnvr4CGsRfOSgcDRkLH0Q3HPgb2M5Gp7d/zqBLSM3C1ntpDd3C44U1ZIgJ0rtAJYoMPXVCLG8fq7uFJgrazMu7s6lrnzS02U6d7OqKUuK7t34w+0isoxs7+kGmJ/lQiaQwO22n/5s1o92ARQyBL459rf2inDxRvF4IoL8AlfOpjLrPUJzjofZq2e42WRA2JeyFL6dkvZSTfObmJf0fgIQdOVvCr4OJWJLvKAQ7RTior/zDQJNK8KeuD/81r0xqrKAYbZJZrybjx0XFMvjpQSet9NG8AThh9aT+HScfZcvUaE7q8q4/8MuhXuiT9Lj4gcUD7tVr+5a8d81hpMywy36Uy05W5Pang65nSlApFyYgoMM+V/QsCzAt+B1FxFFTeIM/Qp6iDNMuj5CKyU6RHECshr6nsKIDKxsVjzdmM894BCIJLgbcdFm6lohK8lwcIZf4gOGkwv0ShPhWs9G+1XQKxr/nvJfPGonhMeO05BL5Pa2FCLfyGTJzbSMXXgHTuNadjDJBI5y6oud/LOgENJW4UERXaIeVyeQRTzUfwK9qyad082XgCuP8iqlk1lENAWteq5cIhSBRZKIAcEZASiiKxuqaignpJySbllIc9tUXmO8+2wiA3Y=
-  - keypass=WVJ5dRmWx4nKbHNjQ9IJdapEQsmfPUGIkOKaagxC/ljmc306G5ffpe0MVJDSdWVRjpHrH3m4o0zqcKDlr/8LNL/x8iDYzvOCNbmrBQctxzzeF95JvXhpq+lMmlOfdwokRsHI9P9ZLCo4ZWh56+Qe0wtpCzw/C/pIUasaEEVF6Ew5f7zBvIfUxkpCbf6xnO7M5+HB6WjMO45AG5UObXME2ocx3iJkCFchvFAftU8fDS4i2NZTzq89C4vddoaLiuqXy2tt/LUJeQZHONzWEG6inKyMTafeBZu/rbnfOqT1qlrwm1M2oLGHO1LGK6eUcbSWfGPj2IOt319P4Hkb8zj2wtN4E28LNwV8byZlnDnahk1jTBU/z87cbFmdQjX1sCmGn4Le0HUg8WWXa4w5PBR1Kpbn0XT1EBAp4wJHBedwSo1ZWVsOzjYONDjCi0tVYdXGW4IrTVdy1bDrz7TB8RtHdDw+YqZ7goH5Q1MDqkdRqzH/juifi+ldays7zdeXtPbEC4yqMjo7UZDK2NO3uLURTH/je6GMjoaTNjPR4iHteWQTFF0t/XNnOHulYf8n3r/QbPfeeqRZcUim6lRU35vqfMoSIpXjlP3AvHkw3aoCKiwywNlP++ZuWrBJiTTvZs/GjetPq5MAZNKwmXmDzNVT5mq6L10J+RUOM1mdmaMHqlY=
-  - LICENSE_1=~/Library/Android/sdk/tools/bin/sdkmanager
-  - LICENSE_2=/usr/local/android-sdk/licenses
+  - ANDROID_API=28
+  - EMULATOR_API=28
+  - ANDROID_BUILD_TOOLS=28.0.2
+  - ADB_INSTALL_TIMEOUT=5
+  - secure: cmN7NOE1a2u6shszWlnTM929mqJvLEYpflTAjbySn9rZfGNpeIw6GBHdHbHu8d/UhclyipPw6kp2YAMT0g7IpdnWHMvp7NdXAxOPdtaND3ZHzvHtQzvUzxmU65nEckwM+atnho9STeVegmSSU8j9jsN/cE/AoZ/4+mEC5ePTFJqtnOHL9E8rmVdXfB2U4ytvwXODU8Ncaokw707j33U4O+T3J1Mnx/2EJ3Ny93oAWZIyfqSevzvG5z6YO9HE7b+4EKKWYm5KDEXGEwmL3dgaEQZAJGXwvgZaJl229HLBqPndyyJVV4j7eNTsZp290rEHzf8kzAC3qd7hmMCgZDPRe0B+OnwZJ35b5y8hAKIGVPuaygXVFfKF85opzLJCcCKOB6ngcj02Gj0IBFpWTYi03n4NC6BSdJP4RUMTtYI7O95wm6F+L7JO7+/2oZWqCXsq+o+Q2R9ZK2yB8voxvbK/H8aPai2xCXDi1hvM2lINRLuGVJY/EPSn4TLbRSoJjdZy15Fpp1TLyajpQnQeVu9R7ECUyv0BGic+VZkWyDj2meSl1dlm+Mxam979fbBVxPiRAi0Gvy22SRCAh77QTnhoe6fxFmBfGGfMYXLIv0j4ilYf8BwABV0KEbssC+iGfQQtM4rUqRSsKl3rKBGb1mCo8ea13n+bNYBihoE8Gp+N3pk=
+  - secure: oRepP/4VUW8i44jf5VeamkGdXHSUUdj7oVRfDeqGLyf9D16k/F0UqCm+zzAK6Mo6XuZsabsiuaWrIRgRMK366DUiNjWtqOe/PdOrHZIvuozQbCtieiRgzMCjF3e6mvNye3t4uka08evYM5+KyMc4FH3px3TWWNJYirvRcwX7CMoA6tJpVXnVFJMku75qtMtk4t7hVYbtKWyXIjplf6Mpe8XKik0j8RpIrA2VQuRmC6nJ7pp1VKHGMTLzWN5oVpQNi0pbzniWnjdieW10o7QUo6LfJrHr4cuI3D0MCFI/9vhG9A+vd7fv6FKIRtJMmOxSflLfqRAtLM1sa8JhCHIZwz1omTO9zI2IJjDSGfS4FGbAWaa1Nq5weN/BvoV4ypvfqp2P21autirNHUmWibp3WAsYdl48mU+t0jfG/d2GPST4zHs0/pjQfQgaKQs/qdHTvoGQpPjJSQO28yiFtD/6C5z0i3z9uMPhuB7OjSICWY/XIAuVooVhNx88qeC+ZV4tQD7mEmlMPesrS7cAJpRtcPH6kxQ4vSFYxOPgOah83HEyrrf0ZlBbTPW7AYC6+bVJ1OTVW7O0QB2O46o1PPXppBUkqEaS53KLvdOMnWfmxGnMaF61fo9i5oJPJNAjNOCHC2SugC5HJDVVelThyU4groJpqIfFwNWLuQ+m2kqmFNE=
 android:
   components:
   - tools
-  - platform-tools
-  - build-tools-28.0.2
-  - android-28
+  - tools
+  - build-tools-$ANDROID_BUILD_TOOLS
+  - android-$ANDROID_API
+  - android-$EMULATOR_API
   - extra-google-m2repository
   - extra-android-m2repository
-  - extra-google-google_play_services
-  - extra-android-support
-  - addon-google_apis-google-$ANDROID_API_LEVEL
-  - addon-google_apis-google-$EMULATOR_API_LEVEL
+  - addon-google_apis-google-19
   - sys-img-armeabi-v7a-addon-google_apis-google-$ANDROID_API_LEVEL
   - sys-img-armeabi-v7a-addon-google_apis-google-$EMULATOR_API_LEVEL
   licenses:
   - android-sdk-preview-license-.+
   - android-sdk-license-.+
   - google-gdk-license-.+
-script:
-- chmod +x gradlew
-- "./gradlew clean"
-- "./gradlew assembleDebug"
-- "./gradlew assembleDebugAndroidTest"
 before_install:
+- openssl aes-256-cbc -K $encrypted_528ef7db22fc_key -iv $encrypted_528ef7db22fc_iv
+  -in keystore.jks.enc -out keystore.jks -d
+- mkdir "$ANDROID_HOME/licenses" || true
+- echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
+- echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
 - yes | sdkmanager "platforms;android-27"
 - chmod +x gradlew
+- "./gradlew dependencies || true"
+before_script:
+- echo no | android create avd --force -n test -t android-28 --abi armeabi-v7a
+- emulator -avd test -no-skin -no-audio -no-window &
+- android-wait-for-emulator
+- adb shell input keyevent 82 &
+script:
+- "./gradlew clean build connectedCheck -PdisablePreDex --stacktrace"
 before_deploy:
-- git config --local user.name "gautamhans1"
-- git config --local user.email "gautamhans1@gmail.com"
-- git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
+- cp $TRAVIS_BUILD_DIR/.keystore $HOME
+- cd app/build/outputs/apk/release/
+- jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore $HOME/keystore.jks
+  -storepass $storepass -keypass $keypass QuizApp-release-unsigned.apk gautam
+- jarsigner -verify QuizApp-release-unsigned.apk
+- "${ANDROID_HOME}/build-tools/28.0.2/zipalign -v 4 QuizApp-release-unsigned.apk QuizApp.apk"
 deploy:
   provider: releases
   api_key:
-    secure: JQ7gBnmTM1H7rItcxeuGj9d7JjuePt7V2RhqPdJx+93RAEumIWwcmmGqYOzAh2QtQliVdaNjuhf0EVfD+ikaDPUDc4a7RB9uZ1l+/tOqI5BaywRCdp0D48aly4Pj1yn30AyE+Zm4LiCwE9CdhHcelUbWRZzW+PaqtxmzNkcPz8XECqesULykpzVSdsrSu6ugYZSEJi2HUDkXO3vXHgKeuMpChgANTQUwzA2nAMuhgjl2GKDLoUHqDh+hk9z7CgUcAk+OFAHSiO55wU14+pZlWSIY2lPtScEcT4svm5zdB6VDc6VuvnUNnbJOc6MJ09uS+zyPmpPVYFe6sGFFM0WkueqNJcOHw4QMublqu8t+VAQVeTxweb8CFJpJ72OssGtspyn5NOj8dtcs0inL0W/gzpsIYFrBv51gwQdcnJYvwz+kiXe5NPU2Zuztr8B2+cTZk6qJTGOtERfoFkduC4MVfEIBuekrHhGEK7F0u4dZS/NoWUZgresggrZkqdfj/tPedjjZuwx11+SKKotZ3xC6HCPCeB/gmoa0DI6+wjBr08AL6ESUlpszU/fTjfgh8/4Tty0vrlaQBTi+5sjLduU+TsK7x1/kXH3zbltR16Pc0dt/VZOCmKmsA6PDBk2jVCoyrIyuGv56Ye4anBWUyu6YkgbVz4IeVKn/5W2FRm+Lzus=
-  file: app\build\outputs\apk\debug\QuizApp-debug.apk
+    secure: YiH3Dej10HeRzFlujcmHFSCUrFaKqMxW2WZXhAUHG9KMsVYumOn6mCgVTXa0o9qkEZhVLZlrYrTRgvCI1nFf7M27kZW1/MyHD/APnYYMxHt6qZGnMn/AheU4Gsr6/jtUhKvyEMtreG6j/hCiWk79Qq58d54NWevP9wiWbO+MkjDs2SqD+KeDlVa5V0rDMdZRHqHMYh73+dviySBeEnNJlC4i0HYKB3Gixkc0geNyNK4X44aBK9tld3Zan8Ekf/D4GcVVNXtVI94FFEbRatXG5lc1OLr6rKMHGFHmawcPMDWctMOoZJWQ1P3FnP7ASbujqbo/Tp7GQmUW45GlL+vEJLdAR3VVMvOGEEpAzHanR8rKqEajmzQavpq0s9oAV3cq43wBkn44Mpc1z0+wrGyXv+0lOm/h7Pq+VKhSTYp2tOZLbHU7sFlxnL/V06x+XDvlY1IldBOXTTJ78RrglHoN3I3MvmUst3KWk/hiVoI7k/bsecDp7HAAQYQP0Ku6uQ+BlPoFpm7DLUMrvxIoVaNpttAYTIstRVxQQtXbHnK0MIsZrAB9VP4IkImsPZ5DMflVE6b+DK07kz3xTRTxwfaqax41ycFtqHaXNoypL8zqJhJVor2Xt9GD4Oq64eOeLS67YWIJTDcdV1xwGlG/rXF7JuowatQXMtNxHo7Ji17lS7M=
+  file: QuizApp.apk
+  skip_cleanup: true
   on:
-    branch: master
-after_failure: "cat $TRAVIS_BUILD_DIR/app/build/outputs/lint-results-debug.xml"
+    repo: gautamhans1/QuizApp
+after_success:
+  - sh set_tags.sh

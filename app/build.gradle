@@ -15,12 +15,15 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            applicationVariants.all { variant ->
-                variant.outputs.all { output ->
-                    outputFileName = "QuizApp-${variant.name}-${variant.versionName}.apk"
-                }
-            }
+//            applicationVariants.all { variant ->
+//                variant.outputs.all { output ->
+//                    outputFileName = "QuizApp-${variant.name}-${variant.versionName}.apk"
+//                }
+//            }
         }
+    }
+    lintOptions{
+        abortOnError false
     }
 }
 
