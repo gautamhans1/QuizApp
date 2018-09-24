@@ -40,6 +40,7 @@ before_install:
 - yes | sdkmanager "platforms;android-27"
 - pwd
 - ls -la
+- dos2unix gradlew
 - chmod +x gradlew
 - "./gradlew dependencies || true"
 # before_script:
