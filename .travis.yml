@@ -40,8 +40,10 @@ before_install:
 - yes | sdkmanager "platforms;android-27"
 - pwd
 - ls -la
+- sudo -s
 - apt-get install dos2unix -y
 - dos2unix gradlew
+- exit
 - chmod +x gradlew
 - "./gradlew dependencies || true"
 # before_script:
