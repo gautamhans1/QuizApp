@@ -46,14 +46,14 @@ before_install:
 script:
 - chmod +x gradlew
 - "./gradlew clean"
-- "./gradlew assembleDebug"
-- "./gradlew assembleDebugAndroidTest"
+- "./gradlew assembleRelease"
+
 before_deploy:
 - cp $TRAVIS_BUILD_DIR/keystore.jks $HOME
-- cd app/build/outputs/apk/
-- ls -la
-- ls -la /release/
-- ls -la /releases/
+- cd app/build/outputs/apk/release/
+
+
+
 
 
 - jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore $HOME/keystore.jks
