@@ -1,9 +1,9 @@
 language: android
 sudo: required
 jdk: oraclejdk8
-before_cache: 
-  - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock 
-  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+before_cache:
+- rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+- rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 cache: "-$HOME/.gradle/caches -$HOME/.gradle/wrapper"
 env:
   global:
@@ -11,9 +11,8 @@ env:
   - EMULATOR_API=28
   - ANDROID_BUILD_TOOLS=28.0.2
   - ADB_INSTALL_TIMEOUT=5
-  - secure: cmN7NOE1a2u6shszWlnTM929mqJvLEYpflTAjbySn9rZfGNpeIw6GBHdHbHu8d/UhclyipPw6kp2YAMT0g7IpdnWHMvp7NdXAxOPdtaND3ZHzvHtQzvUzxmU65nEckwM+atnho9STeVegmSSU8j9jsN/cE/AoZ/4+mEC5ePTFJqtnOHL9E8rmVdXfB2U4ytvwXODU8Ncaokw707j33U4O+T3J1Mnx/2EJ3Ny93oAWZIyfqSevzvG5z6YO9HE7b+4EKKWYm5KDEXGEwmL3dgaEQZAJGXwvgZaJl229HLBqPndyyJVV4j7eNTsZp290rEHzf8kzAC3qd7hmMCgZDPRe0B+OnwZJ35b5y8hAKIGVPuaygXVFfKF85opzLJCcCKOB6ngcj02Gj0IBFpWTYi03n4NC6BSdJP4RUMTtYI7O95wm6F+L7JO7+/2oZWqCXsq+o+Q2R9ZK2yB8voxvbK/H8aPai2xCXDi1hvM2lINRLuGVJY/EPSn4TLbRSoJjdZy15Fpp1TLyajpQnQeVu9R7ECUyv0BGic+VZkWyDj2meSl1dlm+Mxam979fbBVxPiRAi0Gvy22SRCAh77QTnhoe6fxFmBfGGfMYXLIv0j4ilYf8BwABV0KEbssC+iGfQQtM4rUqRSsKl3rKBGb1mCo8ea13n+bNYBihoE8Gp+N3pk=
-  - secure: oRepP/4VUW8i44jf5VeamkGdXHSUUdj7oVRfDeqGLyf9D16k/F0UqCm+zzAK6Mo6XuZsabsiuaWrIRgRMK366DUiNjWtqOe/PdOrHZIvuozQbCtieiRgzMCjF3e6mvNye3t4uka08evYM5+KyMc4FH3px3TWWNJYirvRcwX7CMoA6tJpVXnVFJMku75qtMtk4t7hVYbtKWyXIjplf6Mpe8XKik0j8RpIrA2VQuRmC6nJ7pp1VKHGMTLzWN5oVpQNi0pbzniWnjdieW10o7QUo6LfJrHr4cuI3D0MCFI/9vhG9A+vd7fv6FKIRtJMmOxSflLfqRAtLM1sa8JhCHIZwz1omTO9zI2IJjDSGfS4FGbAWaa1Nq5weN/BvoV4ypvfqp2P21autirNHUmWibp3WAsYdl48mU+t0jfG/d2GPST4zHs0/pjQfQgaKQs/qdHTvoGQpPjJSQO28yiFtD/6C5z0i3z9uMPhuB7OjSICWY/XIAuVooVhNx88qeC+ZV4tQD7mEmlMPesrS7cAJpRtcPH6kxQ4vSFYxOPgOah83HEyrrf0ZlBbTPW7AYC6+bVJ1OTVW7O0QB2O46o1PPXppBUkqEaS53KLvdOMnWfmxGnMaF61fo9i5oJPJNAjNOCHC2SugC5HJDVVelThyU4groJpqIfFwNWLuQ+m2kqmFNE=
-  - secure: TKw8L1ozAOpQ7bTpSyvk5IUdNnOkrXxq3ptzK+hM+EjxtYTEcwlvPPbxgA79Fi2p5drn+yvf1y/Pqo03mkL847w7OyevxnfhpzrtfLVdXv8XbMLRqVkU4buxQoybz1fEX1T3/JLJ3Axu8p6aHy3HiCijR/zMwgCH6GzN6FbQ35/q6CKhmFtJdni6ujruIyTa1Y3wGXUPAilQHsAdOJNMg8uSB/pv9e/bVI9ZWLUQNJcItIIujE5y2trJ1NxkPXYcoK3xmC9M1YhuSCKpbitpib+N/VXxI2o50Cfk5rBlp72FtXf2AXS3/AcRbVGQAyDVH6qvoJsefMqyCPmahlKIsQZXGVxeyM7FSWSidBw7ALAChBM3w7ipGZ7LYGAbr1latsSfNVm8E3Geiqr82yvUqXypBoT1BSitqaGhIgyblzqBKDwzrDl8/8gQFdzh9/4vu0jYgn+PouRGdEZ6rkMkTselZUBsxcLNbXybE6LFWUdcD1KvZiMFiab7uMrtgt4BpqyZOGVFfiyBK0e7v0H3s1uHqdskuibgFhWJZ0asiohv8DDLonnh1jD0YrXQnzXurLT9kexetl5TO4Cx3u4VYc+h+udanY/q06WSThpbTVLllkLKgCBvWujurMlc96DMLmLMr+uuvgSfggCUxHh406xKssTvSJJrFmCAWPGAk4s=
+  - secure: Cay5UWHQunMl4NDa2S3lRVVQJQxiBjAY2pZgSztzrmtPupAKQ6bzbVrybn74UgrvrzO3cWwwbun5WP6lHpkiGp036QZeT6h08gasxgxvreFo36MmYnR5hyEv1Xj2q7eEGt+RJtVnWbjwGj8SWyHFzpOimx06Tuoyi245M7W00SPpQzP0Uzdd/ukolM7R4t2D3PtYKLMIphK1s5PZXMxsYpZwLT26wTHODyTqm/2ezPBk2sNVtwMLE/n8pOW5c/2nQ4fS8VCxBizsoz7lX3mrokCFezTOoCESj4eUR4bqUaDG+FF7VyPCmEICwxWXxAcjjggZeUkALKsaiXCsLLSXwndhSCSv0UcriarcQSIwKbsTx5JB5V3aJ1u6TlBfI6CXVDudqIgvmhCAGsmXbBY1oBeia6jpGcUmiSempo1dsQlJ2B2W5pAAQw0JS+vvFOBIMXgAFmQ4+Lv019cXuReW4wIraf6iblMrYjRctjjOjRp5v2KqAgW0HUXKptWVuIY7HZdkikdZHCl76GGMHNDNaoRbiT4hOG3nG0fdR7Yp291/K9emwK9bxLFvkKKZGoXAXYuWWbx8yhKkTCi+Um/Mra790t+vjfFRqtETwAjGdRPsGRKMDGOzUlVw36qIL0+QKFsKaCdgyN8h3vjqImsNINI1vATwhuGmithUc7ukMTI=
+  - secure: L0s82lQnMDw62DgB+OTNOtciNzWXTQcTkPsZ6CB1hYpc3UrcD4+XsaE5O+54eEzxFNjVi3SlE97aOQtqT+PmT/NpqKFWb5Tgb9GW3rlZHtGeScX/uR7p9+aiwRJYmDLp3ExGpRDjFdp7X6ZYQsXznPEpJC5MxvGF4KQ6k5tLi880gZTwOM1v5UzzyQbJk8ACCbgBOtyMMmBFGaXecDX50/Lsu4eCUjbfPioVvjTHa7t4bZ+WX75gZwZ4WK4IC2K0uiEhfmnSIbf56UBDeaG0Z4XWzdPjlXdaMD4VCpq+VFGK8LzzgSFrJZqN5DP8pNeg41EkVMvAT0dOgMlDDCYzG5tPXfCGa7RIwlNpxtjCeGE03/9aT0uvcDYSJFeh0Nh9ooQzjzo6XuVxm0DRWY53wQAT3xioVhW+dxCuZ7BhCtq2aS2uRWjPIcUPP/Ba3gLPR4yj7R9OUd2f1GnP8rF6qgEFxlQYni6XvXZJC0XRKsD16bfS0jNs7YdDdN58dMm1xU2Pd0fE6xL8cr3fuHCCOKMftoDt3bLBXwWlwwSkFUoJOnEABqXFE3XkQbe84tntP09ghFBiBi4hEWCPy3aA+7q+sksp2oLgCD7PXra98kdu/0TOM+mEv7nNv+wU3WdP2jxodPK+W0vZ2IhFUSoyDz1X2VaEZJZ6pbie3YDTmEM=
 android:
   components:
   - tools
@@ -44,13 +43,6 @@ before_install:
 - dos2unix gradlew
 - chmod +x gradlew
 - "./gradlew dependencies || true"
-# before_script:
-# - echo no | android create avd --force -n test -t android-28 --abi google_apis/armeabi-v7a
-# - emulator -avd test -no-skin -no-audio -no-window &
-# - android-wait-for-emulator
-# - adb shell input keyevent 82 &
-# script:
-# - "./gradlew clean build connectedCheck -PdisablePreDex --stacktrace"
 script:
 - chmod +x gradlew
 - "./gradlew clean"
