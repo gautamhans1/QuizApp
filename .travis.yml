@@ -23,10 +23,10 @@ android:
   - android-$EMULATOR_API
   - extra-google-m2repository
   - extra-android-m2repository
-  - addon-google_apis-google-19
-  # - sys-img-armeabi-v7a-google_apis-$ANDROID_API
-  # - sys-img-armeabi-v7a-addon-google_apis-google-$ANDROID_API_LEVEL
-  # - sys-img-armeabi-v7a-addon-google_apis-google-$EMULATOR_API_LEVEL
+  - addon-google_apis-google-28
+  - sys-img-armeabi-v7a-google_apis-$ANDROID_API
+  - sys-img-armeabi-v7a-addon-google_apis-google-$ANDROID_API_LEVEL
+  - sys-img-armeabi-v7a-addon-google_apis-google-$EMULATOR_API_LEVEL
   licenses:
   - android-sdk-preview-license-.+
   - android-sdk-license-.+
@@ -51,6 +51,11 @@ before_install:
 # - adb shell input keyevent 82 &
 # script:
 # - "./gradlew clean build connectedCheck -PdisablePreDex --stacktrace"
+script:
+- chmod +x gradlew
+- "./gradlew clean"
+- "./gradlew assembleDebug"
+- "./gradlew assembleDebugAndroidTest"
 before_deploy:
 - cp $TRAVIS_BUILD_DIR/.keystore $HOME
 - cd app/build/outputs/apk/release/
