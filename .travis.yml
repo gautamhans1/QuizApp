@@ -62,8 +62,7 @@ before_deploy:
 - "${ANDROID_HOME}/build-tools/28.0.2/zipalign -v 4 app-release-unsigned.apk QuizApp.apk"
 deploy:
   provider: releases
-  api_key:
-    secure: YiH3Dej10HeRzFlujcmHFSCUrFaKqMxW2WZXhAUHG9KMsVYumOn6mCgVTXa0o9qkEZhVLZlrYrTRgvCI1nFf7M27kZW1/MyHD/APnYYMxHt6qZGnMn/AheU4Gsr6/jtUhKvyEMtreG6j/hCiWk79Qq58d54NWevP9wiWbO+MkjDs2SqD+KeDlVa5V0rDMdZRHqHMYh73+dviySBeEnNJlC4i0HYKB3Gixkc0geNyNK4X44aBK9tld3Zan8Ekf/D4GcVVNXtVI94FFEbRatXG5lc1OLr6rKMHGFHmawcPMDWctMOoZJWQ1P3FnP7ASbujqbo/Tp7GQmUW45GlL+vEJLdAR3VVMvOGEEpAzHanR8rKqEajmzQavpq0s9oAV3cq43wBkn44Mpc1z0+wrGyXv+0lOm/h7Pq+VKhSTYp2tOZLbHU7sFlxnL/V06x+XDvlY1IldBOXTTJ78RrglHoN3I3MvmUst3KWk/hiVoI7k/bsecDp7HAAQYQP0Ku6uQ+BlPoFpm7DLUMrvxIoVaNpttAYTIstRVxQQtXbHnK0MIsZrAB9VP4IkImsPZ5DMflVE6b+DK07kz3xTRTxwfaqax41ycFtqHaXNoypL8zqJhJVor2Xt9GD4Oq64eOeLS67YWIJTDcdV1xwGlG/rXF7JuowatQXMtNxHo7Ji17lS7M=
+  api_key: $GITHUB_TOKEN
   file: QuizApp.apk
   skip_cleanup: true
   on:
