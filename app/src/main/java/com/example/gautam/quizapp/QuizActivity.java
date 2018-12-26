@@ -40,6 +40,8 @@ public class QuizActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate(Bundle) called");
         setContentView(R.layout.activity_quiz);
+        mToast = Toast.makeText(QuizActivity.this, "Hi Himanshu!", Toast.LENGTH_SHORT);
+        mToast.show();
 
         mTrueButton = findViewById(R.id.btnTrue);
         mFalseButton = findViewById(R.id.btnFalse);
